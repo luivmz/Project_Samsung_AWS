@@ -1,0 +1,80 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/header-admin.ejs') %>
+    <main class="main-admin">    
+        <%- include('../includes/navigation-admin.ejs') %>
+        <section class="section-admin">
+            <div class="home-greeting">
+                <p id="demo"></p>
+                <p>&nbsp;<%= user.nombres %></p>
+            </div>
+            <div class="statistics">
+                <div class="statistics-card">
+                    <div>
+                        <i class="fa-solid fa-icons"></i>
+                    </div>
+                    <p class="card-quantity"><%= categoriaLength %></p>
+                    <p>Categorías</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="card-icon_div">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <p class="card-quantity"><%= productoLength %></p>
+                    <p>Productos</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="card-icon_div">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <p class="card-quantity"><%= usuarioLength %></p>
+                    <p>Usuarios</p>
+                </div>
+                <div class="statistics-card">
+                    <div class="card-icon_div">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <p class="card-quantity"><%= pedidoLength %></p>
+                    <p>Pedidos</p>
+                </div>
+            </div>
+            <h3>Actividad reciente</h3>
+            <div>
+                <% for (let activity of latestActivity) { %>
+                    <% if (activity.categoria) { %>
+                        <div class="activity-container">
+                            <div class="activity-container_icon">
+                                <i class="fa-solid fa-icons"></i>
+                            </div>
+                            <p>Se creó la categoría <%= activity.categoria %></p>
+                        </div>
+                    <% } else if (activity.precio) { %>
+                        <div class="activity-container">
+                            <div class="activity-container_icon">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+                            <p>Se creó el producto <%= activity.nombreproducto %></p>
+                        </div>
+                    <% } else if (activity.email) { %>
+                        <div class="activity-container">
+                            <div class="activity-container_icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <p>Se creó una cuenta para el email <%= activity.email %></p>
+                        </div>
+                    <% } else { %>
+                        <div class="activity-container">
+                            <div class="activity-container_icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <p>Se creó el pedido <%= activity._id %></p>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </section>             
+    </main>        
+</body>
+<script src="/js/admin.js"></script>

@@ -1,0 +1,90 @@
+main {
+    max-width: 530px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.container {
+    display: grid;
+    gap: 50px;
+}
+
+.datos {
+    display: grid;
+    gap: 20px;
+}
+
+.box-center_flex {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-title {
+    font-size: 24px;
+    color: #222488;
+}
+
+.legend {
+    display: block;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    unicode-bidi: isolate;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    font-size: 22px;
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.btn-samsung {
+    background: #2089ff;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    letter-spacing: 2.4px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.btn-samsung:hover {
+    background-color: #0056b3;
+}
+
+.inputText {
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c2c2c2;
+    border-radius: 1px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 32px;
+    line-height: 1.42857143;
+    padding: 0 9px;
+    vertical-align: baseline;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputText:focus {
+    border: 1px solid #c2c2c2;
+    outline: none;
+}
+
+.asterisco {
+    color: red;
+    font-size: small;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.invalid:focus {
+    border-color: red;
+}

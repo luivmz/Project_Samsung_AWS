@@ -1,0 +1,132 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/producto.css">
+
+    </head>
+
+    <body>
+        <%- include('../includes/header-publicidad.ejs') %>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <section>
+                    <div class="hwrap">
+                        <div class="hmove1">
+                            <div class="hslide">
+                                <img class="hslide-img" src="https://shop.samsung.com/latin/pub/media/main-slider/2024-oct/2024-10-14-Launch-Banner-desktop-home-pa_v3.jpg" alt="banner1">
+                            </div>
+                            <div class="hslide">
+                                <img class="hslide-img" src="https://shop.samsung.com/latin/pub/media/main-slider/2024-nov/2024-11-1Samsung-Days_Multi-Banner-home-desktop_pa.jpg" alt="banner2">
+                            </div>
+                            <div class="hslide">
+                                <img class="hslide-img" src="https://shop.samsung.com/latin/pub/media/main-slider/2024-sep/2024-09-02-EstaEsLaTele-Banner-Desktop.jpg" alt="banner3">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="selected-products">
+                    <h2>Novedades</h2>
+                    <% if (prods.length> 0) { %>
+                        <div class="grid">
+                            <% for (let producto of prods.slice(0, 4)) { %>
+                                <article class="card product-item">
+                                    <div class="card__image">
+                                        <a href="/productos/<%= producto._id %>">
+                                            <img src="<%= producto.urlImagen %>" alt="<%= producto.nombreproducto %>">
+                                        </a>
+                                    </div>
+                                    <header class="card__header">
+                                        <h1 class="product__title">
+                                            <%= producto.nombreproducto %>
+                                        </h1>
+                                    </header>
+                                    <div class="card__content">
+                                        <h2 class="product__price">S/. <%= producto.precio %></h2>
+                                        <div class="card__actions">
+                                            <% if (typeof user=='object' && user){ %>
+                                                <%- include('../includes/agregar-al-carrito.ejs', {producto: producto}) %>
+                                                    <% }%>
+                                        </div>
+                                    </div>
+                                </article>
+                            <% } %>
+                        </div>
+                    <% } else { %>
+                        <h1>No hay productos</h1>
+                    <% } %>
+                </section>
+                <section>
+                    <div class="hwrap">
+                        <div class="hmove2">
+                            <div class="hslide2">
+                                <h2>Descubre los nuevos productos Galaxy</h2>
+                                <div>
+                                    <img src="https://shop.samsung.com/latin/pub/media/menu/2024-10-07-Carrusel-Home-PA_v2.png" alt="banner1">
+                                </div>
+                            </div>
+                            <div class="hslide2">
+                                <h2>Resuelve tus consultas con los expertos</h2>
+                                <div>
+                                    <img src="https://shop.samsung.com/latin/pub/media/menu/2024-09-04-Carrusel-Vpromoter_v3_png.png" alt="banner2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="selected-products">
+                    <h2>Los más elegidos</h2>
+                    <% if (prods.length> 0) { %>
+                        <div class="grid">
+                            <% for (let producto of prods.reverse().slice(0, 4)) { %>
+                                <article class="card product-item">
+                                    <div class="card__image">
+                                        <a href="/productos/<%= producto._id %>">
+                                            <img src="<%= producto.urlImagen %>" alt="<%= producto.nombreproducto %>">
+                                        </a>
+                                    </div>
+                                    <header class="card__header">
+                                        <h1 class="product__title">
+                                            <%= producto.nombreproducto %>
+                                        </h1>
+                                    </header>
+                                    <div class="card__content">
+                                        <h2 class="product__price">S/. <%= producto.precio %></h2>
+                                        <div class="card__actions">
+                                            <% if (typeof user=='object' && user){ %>
+                                                <%- include('../includes/agregar-al-carrito.ejs', {producto: producto}) %>
+                                                    <% }%>
+                                        </div>
+                                    </div>
+                                </article>
+                            <% } %>
+                        </div>
+                    <% } else { %>
+                        <h1>No hay productos</h1>
+                    <% } %>
+                </section>
+                <section class="cards-info-shop">
+                    <div class="card-info">
+                        <div><i class="fa-solid fa-shield fa-2xl"></i></div>
+                        <h3 class="card-info_title">Tu compra está protegida</h3>
+                        <p class="card-info_p">Procesamos los pagos con plataformas certificadas 100% seguras. No guardamos ni manipulamos datos sensibles.</p>
+                        <a class="card-info_a">Ver información de seguridad y pagos</a>
+                    </div>
+                    <div class="card-info">
+                        <div><i class="fa-solid fa-truck fa-2xl"></i></div>
+                        <h3 class="card-info_title">Envíos Gratis entre 24 y 72h</h3>
+                        <p class="card-info_p">Envíos para productos mobile en el mismo día de procesado el pago, para el resto del catálogo entre 24 y 72h.</p>
+                        <a class="card-info_a">Ver condiciones y zonas de entregas</a>
+                    </div>
+                    <div class="card-info">
+                        <div><i class="fa-solid fa-circle-question fa-2xl"></i></div>
+                        <h3 class="card-info_title">¿Tienes dudas?</h3>
+                        <p class="card-info_p">
+                            Estamos para ayudarte. Contáctanos por chat, por teléfono o email.
+                            <br>
+                            <br>
+                            L a V de 7:30 a 19:30 | S de 8 a 12</p>
+                        <a class="card-info_a">Ver canales de contacto</a>
+                    </div>
+                </section>
+            </main>
+            <%- include('../includes/end.ejs') %>

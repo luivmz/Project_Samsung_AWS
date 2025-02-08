@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/detalle-producto.css">
+    </head>
+
+    <body>
+        <%- include('../includes/header-publicidad.ejs') %>
+            <%- include('../includes/navigation.ejs') %>
+                <%- include('../includes/breadcrumbs.ejs') %>
+                    <main class="centered">
+
+
+                        <div class="product-left">
+                            <img src="/<%= producto.urlImagen %>" alt="<%= producto.nombreproducto %>" />
+                        </div>
+
+                        <div class="product-right">
+                            <h1>
+                                <%= producto.nombreproducto %>
+                            </h1>
+                            <span class="price">S/. <%= producto.precio %></span>
+                            <div class="card-bottom">
+                                <p>
+                                    <%= producto.descripcion %>
+                                </p>
+                                <% if (producto.caracteristicas && producto.caracteristicas.length> 0) { %>
+                                    <ul>
+                                        <% for (let c of producto.caracteristicas) { %>
+                                            <li>
+                                                <%= c %>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                <% } %>
+                                <% if (typeof user=='object' && user){ %>
+                                    <form action="/carrito" method="post">
+                                        <div class="quantity-selector">
+                                            <label for="quantity">Cantidad:</label>
+                                            <input type="number" id="quantity" name="quantity" value="" min="1" />
+                                        </div>
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button class="btn" type="submit">Agregar al carrito</button>
+                                        <input type="hidden" name="idProducto" value="<%= producto._id %>">
+                                    </form>
+                                <% }%>
+                            </div>
+                        </div>
+
+                    </main>
+                    <%- include('../includes/end.ejs') %>
+    </body>

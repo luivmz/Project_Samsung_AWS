@@ -1,0 +1,6 @@
+<form action="/carrito" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="hidden" id="quantity" name="quantity" value="1" min="1" />
+    <button class="btn" type="submit">AGREGAR AL CARRITO</button>
+    <input type="hidden" name="idProducto" value="<%= producto._id %>">
+</form>

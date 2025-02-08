@@ -1,0 +1,94 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list ">
+            <li class="main-header__item__logo box-center_flex">
+                <a href="/">
+                    <div class="logo-container">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/014/018/566/small_2x/samsung-logo-on-transparent-background-free-vector.jpg"
+                            alt="Samsung Logo">
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="main-header__item-list ">
+            <% if (categorias.length > 0) { %>
+                <% categorias.forEach(categoria => { %>
+                  <li class="main-header__item box-center_flex">
+                    <a href="/categoria/<%= categoria.ruta %>">
+                      <%= categoria.categoria %>
+                    </a>
+                  </li>
+                <% }) %>
+              <% } else { %>
+                <li class="main-header__item box-center_flex">
+                  <span>No hay categorías disponibles</span>
+                </li>
+            <% } %>
+                   
+            <% if (typeof user=='object' && user.isadmin) { %>
+                <li class="main-header__item box-center_flex">
+                    <a class="<%= path === '/admin/productos' ? 'active' : '' %>" href="/admin/productos">
+                        Admin Productos
+                    </a>
+                </li>
+                <li class="main-header__item box-center_flex">
+                    <a class="<%= path === '/admin/categorias' ? 'active' : '' %>" href="/admin/categorias">
+                        Admin Categorias
+                    </a>
+                </li>
+            <% }%>
+        </ul>
+        <ul class="main-header__item-list ">
+            <% if (typeof user=='object' && user) { %>
+                
+            <% } else{ %>
+                <li class="main-header__item box-center_flex">
+                    <a class="<%= path === '/login' ? 'active' : '' %>" href="/usuario/login">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </li>
+            <% } %>
+            <% if (typeof user=='object' && user){ %>
+                <li class="main-header__item box-center_flex carrito-contenedor">
+                    <a href="/carrito" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <div class="cart-dropdown">
+                        <!-- Aquí se insertarán dinámicamente los productos -->
+                        <div class="cart-items">
+                            <!-- Los elementos del carrito irán aquí -->
+                        </div>
+                        <div class="cart-total">
+                            <span id="cart-total-price"></span>
+                        </div>
+                        <a href="/carrito" class="btn">Ver Carrito</a>
+                    </div>
+                </li>
+                <li class="main-header__item box-center_flex">
+                    <a href="/pedidos">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </a>
+                </li>
+                <!-- menu de carrito -->
+                <script src="/js/carrito.js"></script>
+            <% }%>
+            <li class="main-header__item box-center_flex">
+                <a><i class="fa-solid fa-magnifying-glass"></i></a>
+            </li>
+            <% if (typeof user=='object' && user){ %>
+                <li class="main-header__item box-center_flex">
+                    <%= user.nombres %>
+                </li>
+                <form class="box-center_flex" action="/usuario/logout" method="POST">
+                    <a class="box-center_flex ">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit"
+                            style="background-color:transparent;border:none;font-size:inherit;  cursor:pointer;">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </a>
+                </form>
+            <% }%>
+        </ul>
+    </nav>
+</header>

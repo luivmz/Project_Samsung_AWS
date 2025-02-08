@@ -1,0 +1,141 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* SECCION DE CARDS */
+
+.selected-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    flex-wrap: nowrap !important;
+}
+
+.product-item {
+    width: auto !important;
+}
+
+.card__image {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+/* CARDS AYUDA COMPRAS */
+
+.cards-info-shop {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.card-info {
+    background-color: #f9f9f9;
+    border-radius: 24px;
+    padding: 40px;
+    flex: 1;
+    max-width: 320px;
+}
+
+.card-info_p {
+    font-size: 16px;
+}
+
+.card-info_a {
+    font-size: 14px;
+    color: #222488;
+    cursor: pointer;
+}
+
+.card-info_a:hover {
+    color: #006bb4;
+    text-decoration: underline;
+}
+
+/* CARRUSEL HOME 1 */
+
+.hmove1 {
+    display: flex;
+    position: relative;
+    top: 0;
+    right: 0;
+    animation: slideh1 16s infinite;
+}
+
+.hmove1:hover {
+    animation-play-state: paused;
+}
+
+.hslide {
+    width: 100%;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.hslide-img {
+    width: 100%;
+}
+
+.hwrap {
+    overflow: hidden;
+}
+
+@keyframes slideh1 {
+    0% { right: 0; }
+    33% { right: 100%;}
+    66% { right: 200%;}
+    100% { right: 0;}
+}
+
+/* CARRUSEL HOME 2 */
+
+.hmove2 {
+    display: flex;
+    position: relative;
+    top: 0;
+    right: 0;
+    animation: slideh2 16s infinite;
+}
+
+.hmove2:hover {
+    animation-play-state: paused;
+}
+
+.hslide2 {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes slideh2 {
+    0% { right: 0; }
+    50% { right: 100%;}
+    100% { right: 0;}
+}
+
+@media only screen and (max-width: 1023px) {
+    .grid {
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+
+    .cards-info-shop {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .card-info {
+        background-color: #f9f9f9;
+        border-radius: 24px;
+        padding: 40px;
+        max-width: none;
+    }
+  }

@@ -1,0 +1,68 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/login.css">
+    </head>
+
+    <body>
+        <%- include('includes/header-publicidad.ejs') %>
+        <%- include('includes/navigation.ejs') %>
+            <main>
+                <% if (mensajeError) { %>
+                    <div class="user-message user-message--error">
+                        <%= mensajeError %>
+                    </div>
+                    <% } %>
+                        <div class="container">
+                            <div>
+                                <form class="datos" action="/usuario/login" method="POST" novalidate>
+                                    <div id="page-title"><b>Inicio de sesión de cliente</b></div>
+                                    <legend class="legend">
+                                        <div>Clientes registrados</div>
+                                    </legend>
+                                    <div>Si tienes una cuenta, inicia sesión con tu dirección de correo electrónico.
+                                    </div>
+                                    <div>
+                                        <label>Correo electrónico <span class="asterisco">*</span></label>
+                                        <input
+                                            class="<%= erroresValidacion.find(e => e.path === 'email') ? 'inputText invalid' : 'inputText' %>"
+                                            type="email"
+                                            name="email"
+                                            value="<%= datosAnteriores.email %>">
+                                    </div>
+                                    <div>
+                                        <label>Contraseña <span class="asterisco">*</span></label>
+                                        <input
+                                            class="<%= erroresValidacion.find(e => e.path === 'password') ? 'inputText invalid' : 'inputText' %>"
+                                            type="password"
+                                            name="password"
+                                            value="<%= datosAnteriores.password %>">
+                                        <a href="/usuario/reset-password">Olvidé mi contraseña</a>
+                                    </div>
+                                    <div>
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" class="btn-samsung">
+                                            <span>Iniciar sesion</span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <span class="asterisco">*Campos obligatorios</span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div>
+                                <form class="datos" action="/usuario/signup" method="GET">
+                                    <legend class="legend">
+                                        <div>Nuevos clientes</div>
+                                    </legend>
+                                    <div>Crear una cuenta tiene muchos beneficios: Pago más rápido, guardar más de una
+                                        dirección, seguimiento de pedidos y mucho más.</div>
+                                    <div>
+                                        <button type="submit" class="btn-samsung">
+                                            <span>Crear una cuenta</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+            </main>
+            <%- include('includes/end.ejs') %>
